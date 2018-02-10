@@ -43,8 +43,10 @@ else % if input is an array
 end    
 msg('I', procHierarchy, sprintf('file = ''%s''', p2mat), 'LogLevel', 'basic');
 
+% Import point cloud every time (to avoid cache becoming stale issues)
+if true
 % Import point cloud (only if mat file not present)
-if ~exist(p2mat, 'file')
+%if ~exist(p2mat, 'file')
     objPC = pointCloud(varargin{:});
     objPC.save(p2mat);
 else
